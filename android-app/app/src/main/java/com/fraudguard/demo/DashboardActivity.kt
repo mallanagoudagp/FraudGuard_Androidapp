@@ -37,8 +37,7 @@ class DashboardActivity : Activity() {
     private lateinit var typingPieChart: PieChart
     private lateinit var usagePieChart: PieChart
     private lateinit var fusionHistoryChart: LineChart
-    private lateinit var recyclerView: RecyclerView
-    private val adapter = LogAdapter()
+   
 
     private val fusionEngine = FusionEngine()
     private val touchAgent = TouchAgent()
@@ -57,9 +56,7 @@ class DashboardActivity : Activity() {
         typingPieChart = findViewById(R.id.typingPieChart)
         usagePieChart = findViewById(R.id.usagePieChart)
         fusionHistoryChart = findViewById(R.id.fusionHistoryChart)
-        recyclerView = findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+       
 
         touchAgent.start()
         typingAgent.start()
@@ -72,15 +69,6 @@ class DashboardActivity : Activity() {
 
         handler.post(updateCharts)
 
-    scope.launch {
-        try {
-            AppDb.get(this@DashboardActivity).scoreLogDao().recent().collectLatest {
-                    adapter.submit(it)
-            }
-        } catch (e: Exception) {
-            android.util.Log.e("DashboardActivity", "Error loading score logs: ${e.message}")
-        }
-    }
 }
 
     private fun setupPieChart(chart: PieChart, label: String, color: Int) {
@@ -181,21 +169,7 @@ class DashboardActivity : Activity() {
     }
 }
 
-    private class LogAdapter : RecyclerView.Adapter<LogVH>() {
-    private val data = ArrayList<ScoreLog>()
-    fun submit(list: List<ScoreLog>) { data.clear(); data.addAll(list); notifyDataSetChanged() }
-    override fun onCreateViewHolder(parent: android.view.ViewGroup, viewType: Int): LogVH {
-        val v = android.view.LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_2, parent, false)
-        return LogVH(v as android.widget.TwoLineListItem)
-    }
-    override fun getItemCount(): Int = data.size
-    override fun onBindViewHolder(holder: LogVH, position: Int) { holder.bind(data[position]) }
-    }
+   
 
-    private class LogVH(private val view: android.widget.TwoLineListItem) : RecyclerView.ViewHolder(view) {
-    fun bind(item: ScoreLog) {
-        view.text1.text = "${java.text.SimpleDateFormat("HH:mm:ss").format(java.util.Date(item.timestamp))} • ${item.risk} ${"%.2f".format(item.fused)}"
-        view.text2.text = "Tch ${fmt(item.touch)}  Typ ${fmt(item.typing)}  Usg ${fmt(item.usage)}"
-    }
-    private fun fmt(d: Double?): String = if (d == null) "--" else "%.2f".format(d)
-    }
+   
+   
