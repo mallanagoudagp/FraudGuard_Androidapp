@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FraudGuard Demo</string>
+    <string name="accessibility_service_description">Monitors foreground app switches to feed UsageAgent</string>
+    <string name="honeytrap_title">Session verification</string>
+    <string name="honeytrap_subtitle">Verifying session…</string>
+    <string name="honeytrap_base_url">https://trap.example.com/collect</string>
+</resources>

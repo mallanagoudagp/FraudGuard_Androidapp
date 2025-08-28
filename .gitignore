@@ -1,0 +1,75 @@
+
+
+# Logs & data
+*.log
+*.csv
+/data/
+
+# Python
+venv/
+**/__pycache__/
+*.pyc
+/demo/build/
+
+# IDE/Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Streamlit
+.streamlit/
+
+# Data and logs
+logs/
+*.log
+data/*.csv
+
+# Models/artifacts (keep repo lean)
+models/**/*.tflite
+models/**/*.onnx
+models/**/*.pb
+models/**/saved_model/
+models/**/*.h5
+models/**/*.keras
+models/**/*.ckpt*
+models/**/*.pt
+models/**/*.bin
+models/**/*.zip
+models/**/*.tar
+models/**/*.gz
+models/**/convert_log*.txt
+
+# Allow small metadata files
+!models/**/*.txt
+!models/**/*.json
+
+# Notebooks
+*.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Android/Gradle
+android-app/.gradle/
+android-app/.idea/
+android-app/local.properties
+android-app/app/build/
+android-app/build/
+.gradle/
+.idea/
+
+# Java build
+app/*.class
+app/build/
+
+# Virtualenvs
+.android-venv/

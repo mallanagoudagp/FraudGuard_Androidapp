@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:padding="20dp">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<TextView
+			android:text="Setup Instructions"
+			android:textSize="22sp"
+			android:textStyle="bold"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="12dp" />
+
+		<TextView
+			android:id="@+id/tvSteps"
+			android:text="1) Enable Accessibility Service for FraudGuard Demo\n2) Start Background Service from the demo screen\n3) Enable and use FraudGuard keyboard (optional)\n4) Perform 5 touches and 5 keystrokes\n5) Switch between apps twice\n6) Tap Run Demo to see live scores"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp" />
+
+		<Button
+			android:id="@+id/btnOpenAccessibility"
+			android:text="Open Accessibility Settings"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+
+		<Button
+			android:id="@+id/btnSelectIme"
+			android:text="Open Keyboard Settings"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp" />
+
+		<Button
+			android:id="@+id/btnNotifications"
+			android:text="Open Notification Settings"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp" />
+
+	</LinearLayout>
+</ScrollView>

@@ -1,0 +1,1 @@
+GestureFeatureListener and TouchFeatureCsvExporter have been consolidated into TouchAgent.java (package-private types) to reduce file count without changing behavior. If you reference these from outside package 'app', consider promoting them to public nested types inside TouchAgent instead.
