@@ -153,9 +153,39 @@ System.out.println(r.score + " " + r.explanations);
 
 agent.stop();
 ```
+### Fusion Score Calculation
 
+The **FusionEngine** combines agent scores using weighted averaging and risk logic:
+
+```
+fusion_score = w1 * touch_score + w2 * typing_score + w3 * usage_score
+```
+- `w1`, `w2`, `w3` are agent weights (configurable).
+- The fusion score is mapped to risk levels:
+  - **LOW**: fusion_score > 0.7
+  - **MEDIUM**: 0.4 < fusion_score ≤ 0.7
+  - **HIGH**: fusion_score ≤ 0.4
+
+Fusion scores are updated in real time and visualized in the dashboard.
 ### Optional: Python Streamlit demo
+ ### Honeypot (Honeytrap) Mechanism
 
+- The honeypot screen contains decoy elements (fake password field, submit button, suspicious link).
+- Interactions with these elements are logged as honeypot events.
+- If repeated suspicious events are detected, a notification is triggered.
+- Honeypot logs are stored locally and can be exported for analysis.
+- **Note:** Honeypot scores do NOT affect the fusion score; they are tracked independently.
+
+---
+
+## App Flow
+
+1. **User opens the app.**
+2. **Agents start monitoring behavior.**
+3. **Scores are calculated and fused in real time.**
+4. **Dashboard displays live scores and risk level.**
+5. **Honeypot events are logged if decoy elements are triggered.**
+6. 
 ```bat
 python -m venv venv
 venv\Scripts\activate
@@ -184,3 +214,16 @@ Contributions are welcome! See [contributing.md](docs/contributing.md) for guide
 - [Fusion Engine](docs/fusion.md)
 - [Novelty Details](docs/novelty.md)
 - [Scalability](docs/scalability.md)
+## Security & Privacy
+
+- All behavioral data is processed locally.
+- No personal data is sent to external servers.
+- Honeypot logs are stored securely and can be exported by authorized users.
+
+---  
+
+## Troubleshooting
+
+- If dashboard charts do not appear, ensure all required views are present in `activity_dashboard.xml`.
+- For build errors, verify all dependencies and view IDs.
+- For honeypot issues, check event logging and notification settings.
